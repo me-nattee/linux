@@ -1,0 +1,189 @@
+natasha@natasha-VirtualBox:~$ mkdir homework
+natasha@natasha-VirtualBox:~$ ls
+Desktop  Documents  Downloads  homework  Music  Pictures  Public  Templates  Videos
+natasha@natasha-VirtualBox:~$ cd homework/
+natasha@natasha-VirtualBox:~/homework$ touch file1
+natasha@natasha-VirtualBox:~/homework$ echo "123" >> file1
+natasha@natasha-VirtualBox:~/homework$ man cat
+natasha@natasha-VirtualBox:~/homework$ cat file1
+123
+natasha@natasha-VirtualBox:~/homework$ cp file1 file2
+natasha@natasha-VirtualBox:~/homework$ cat file2
+123
+natasha@natasha-VirtualBox:~/homework$ tac file2
+123
+natasha@natasha-VirtualBox:~/homework$ man ln
+natasha@natasha-VirtualBox:~/homework$ ln -s file1 file3
+natasha@natasha-VirtualBox:~/homework$ ls -l
+total 8
+-rw-rw-r-- 1 natasha natasha 4 янв 12 16:09 file1
+-rw-rw-r-- 1 natasha natasha 4 янв 12 16:12 file2
+lrwxrwxrwx 1 natasha natasha 5 янв 12 16:18 file3 -> file1
+natasha@natasha-VirtualBox:~/homework$ ls -il
+total 8
+272372 -rw-rw-r-- 1 natasha natasha 4 янв 12 16:09 file1
+272371 -rw-rw-r-- 1 natasha natasha 4 янв 12 16:12 file2
+272375 lrwxrwxrwx 1 natasha natasha 5 янв 12 16:18 file3 -> file1
+natasha@natasha-VirtualBox:~/homework$ ln file1 file4
+natasha@natasha-VirtualBox:~/homework$ ls -il
+total 12
+272372 -rw-rw-r-- 2 natasha natasha 4 янв 12 16:09 file1
+272371 -rw-rw-r-- 1 natasha natasha 4 янв 12 16:12 file2
+272375 lrwxrwxrwx 1 natasha natasha 5 янв 12 16:18 file3 -> file1
+272372 -rw-rw-r-- 2 natasha natasha 4 янв 12 16:09 file4
+natasha@natasha-VirtualBox:~/homework$ rm file1
+natasha@natasha-VirtualBox:~/homework$ ls -il
+total 8
+272371 -rw-rw-r-- 1 natasha natasha 4 янв 12 16:12 file2
+272375 lrwxrwxrwx 1 natasha natasha 5 янв 12 16:18 file3 -> file1
+272372 -rw-rw-r-- 1 natasha natasha 4 янв 12 16:09 file4
+natasha@natasha-VirtualBox:~/homework$ cat file2
+123
+natasha@natasha-VirtualBox:~/homework$ cat file3
+cat: file3: No such file or directory
+natasha@natasha-VirtualBox:~/homework$ cat file4
+123
+natasha@natasha-VirtualBox:~/homework$ mv file2 doc2
+natasha@natasha-VirtualBox:~/homework$ mv file4 doc4
+natasha@natasha-VirtualBox:~/homework$ ls
+doc2  doc4  file3
+natasha@natasha-VirtualBox:~/homework$ ln -s doc2 doc5
+natasha@natasha-VirtualBox:~/homework$ ls
+doc2  doc4  doc5  file3
+natasha@natasha-VirtualBox:~/homework$ ln -s doc4 doc6
+natasha@natasha-VirtualBox:~/homework$ ls
+doc2  doc4  doc5  doc6  file3
+natasha@natasha-VirtualBox:~/homework$ mkdir folder
+natasha@natasha-VirtualBox:~/homework$ ls
+doc2  doc4  doc5  doc6  file3  folder
+natasha@natasha-VirtualBox:~/homework$ mv doc5 doc6 file3 folder
+natasha@natasha-VirtualBox:~/homework$ ls
+doc2  doc4  folder
+natasha@natasha-VirtualBox:~/homework$ ls -l folder/
+total 0
+lrwxrwxrwx 1 natasha natasha 4 янв 12 16:29 doc5 -> doc2
+lrwxrwxrwx 1 natasha natasha 4 янв 12 16:30 doc6 -> doc4
+lrwxrwxrwx 1 natasha natasha 5 янв 12 16:18 file3 -> file1
+natasha@natasha-VirtualBox:~/homework$ ln -s /home/natasha/homework/doc2 doc7
+natasha@natasha-VirtualBox:~/homework$ ls -l
+total 12
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:12 doc2
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:09 doc4
+lrwxrwxrwx 1 natasha natasha   27 янв 12 16:35 doc7 -> /home/natasha/homework/doc2
+drwxrwxr-x 2 natasha natasha 4096 янв 12 16:31 folder
+natasha@natasha-VirtualBox:~/homework$ mv doc7 folder
+natasha@natasha-VirtualBox:~/homework$ ls -l folder/
+total 0
+lrwxrwxrwx 1 natasha natasha  4 янв 12 16:29 doc5 -> doc2
+lrwxrwxrwx 1 natasha natasha  4 янв 12 16:30 doc6 -> doc4
+lrwxrwxrwx 1 natasha natasha 27 янв 12 16:35 doc7 -> /home/natasha/homework/doc2
+lrwxrwxrwx 1 natasha natasha  5 янв 12 16:18 file3 -> file1
+natasha@natasha-VirtualBox:~/homework$ touch document1 document2
+natasha@natasha-VirtualBox:~/homework$ ls -l
+total 12
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:12 doc2
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:09 doc4
+-rw-rw-r-- 1 natasha natasha    0 янв 12 16:40 document1
+-rw-rw-r-- 1 natasha natasha    0 янв 12 16:40 document2
+drwxrwxr-x 2 natasha natasha 4096 янв 12 16:35 folder
+natasha@natasha-VirtualBox:~/homework$ chmod go-rw document2
+natasha@natasha-VirtualBox:~/homework$ ls -l
+total 12
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:12 doc2
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:09 doc4
+-rw-rw-r-- 1 natasha natasha    0 янв 12 16:40 document1
+-rw------- 1 natasha natasha    0 янв 12 16:40 document2
+drwxrwxr-x 2 natasha natasha 4096 янв 12 16:35 folder
+natasha@natasha-VirtualBox:~/homework$ chmod 600 document2
+natasha@natasha-VirtualBox:~/homework$ ls -l
+total 12
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:12 doc2
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:09 doc4
+-rw-rw-r-- 1 natasha natasha    0 янв 12 16:40 document1
+-rw------- 1 natasha natasha    0 янв 12 16:40 document2
+drwxrwxr-x 2 natasha natasha 4096 янв 12 16:35 folder
+natasha@natasha-VirtualBox:~/homework$ cat /etc/sudoers
+cat: /etc/sudoers: Permission denied
+natasha@natasha-VirtualBox:~/homework$ sudo cat /etc/sudoers
+[sudo] password for natasha:
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+natasha@natasha-VirtualBox:~/homework$ man useradd
+natasha@natasha-VirtualBox:~/homework$ sudo useradd -g admin vadim
+useradd: group 'admin' does not exist
+natasha@natasha-VirtualBox:~/homework$ sudo useradd -g sudo vadim
+natasha@natasha-VirtualBox:~/homework$ sudo -u vadim -i
+sudo: unable to change directory to /home/vadim: No such file or directory
+sudo: unable to execute /bin/sh: No such file or directory
+natasha@natasha-VirtualBox:~/homework$ man useradd
+natasha@natasha-VirtualBox:~/homework$ sudo userdel vadim
+natasha@natasha-VirtualBox:~/homework$ sudo useradd -g sudo vadim -m
+natasha@natasha-VirtualBox:~/homework$ sudo -u vadim -i
+$ whoami
+vadim
+$ sudo whoami
+[sudo] password for vadim:
+$
+natasha@natasha-VirtualBox:~/homework$ sudo passwd vadim
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+natasha@natasha-VirtualBox:~/homework$ sudo -u vadim -i
+$ sudo whoami
+[sudo] password for vadim:
+root
+$  
+
+natasha@natasha-VirtualBox:~/homework$ mkdir secret
+natasha@natasha-VirtualBox:~/homework$ touch secret/mysecretfile
+natasha@natasha-VirtualBox:~/homework$ ls -l secret/
+total 0
+-rw-rw-r-- 1 natasha natasha 0 янв 12 17:14 mysecretfile
+natasha@natasha-VirtualBox:~/homework$ chmod u-r secret/
+natasha@natasha-VirtualBox:~/homework$ ls -l
+total 16
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:12 doc2
+-rw-rw-r-- 1 natasha natasha    4 янв 12 16:09 doc4
+-rw-rw-r-- 1 natasha natasha    0 янв 12 16:40 document1
+-rw------- 1 natasha natasha    0 янв 12 16:40 document2
+drwxrwxr-x 2 natasha natasha 4096 янв 12 16:35 folder
+d-wxrwxr-x 2 natasha natasha 4096 янв 12 17:14 secret
+natasha@natasha-VirtualBox:~/homework$ ls secret/
+ls: cannot open directory 'secret/': Permission denied
+natasha@natasha-VirtualBox:~/homework$ ls -l secret/mysecretfile
+-rw-rw-r-- 1 natasha natasha 0 янв 12 17:14 secret/mysecretfile
+natasha@natasha-VirtualBox:~/homework$ chmod u-x secret/
+natasha@natasha-VirtualBox:~/homework$ ls secret/
+ls: cannot open directory 'secret/': Permission denied
+natasha@natasha-VirtualBox:~/homework$ ls -l secret/mysecretfile
+ls: cannot access 'secret/mysecretfile': Permission denied
+natasha@natasha-VirtualBox:~/homework$
+
