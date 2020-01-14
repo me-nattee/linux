@@ -145,7 +145,11 @@ sudo: unable to change directory to /home/vadim: No such file or directory
 sudo: unable to execute /bin/sh: No such file or directory
 natasha@natasha-VirtualBox:~/homework$ man useradd
 natasha@natasha-VirtualBox:~/homework$ sudo userdel vadim
+
 natasha@natasha-VirtualBox:~/homework$ sudo useradd -g sudo vadim -m
+
+>Вот это не очено хорошо. В Линуксе есть Основная группа Пользователя, а есть дополнительные. В данном случае вы делаете группу sudo основной группой пользователя. GID основной группы используется для организации прав доступа. Группа sudo же не является основной ни для какого пользователя и ее GID не используется для управления правами на файлы. Короче говоря, нужно использовать параметр '-G' вместо '-g'.
+
 natasha@natasha-VirtualBox:~/homework$ sudo -u vadim -i
 $ whoami
 vadim
@@ -160,7 +164,7 @@ natasha@natasha-VirtualBox:~/homework$ sudo -u vadim -i
 $ sudo whoami
 [sudo] password for vadim:
 root
-$  
+$
 
 natasha@natasha-VirtualBox:~/homework$ mkdir secret
 natasha@natasha-VirtualBox:~/homework$ touch secret/mysecretfile
@@ -183,6 +187,9 @@ natasha@natasha-VirtualBox:~/homework$ ls -l secret/mysecretfile
 natasha@natasha-VirtualBox:~/homework$ chmod u-x secret/
 natasha@natasha-VirtualBox:~/homework$ ls secret/
 ls: cannot open directory 'secret/': Permission denied
+
+> ну да, бит на выполнение надо оставить.
+
 natasha@natasha-VirtualBox:~/homework$ ls -l secret/mysecretfile
 ls: cannot access 'secret/mysecretfile': Permission denied
 natasha@natasha-VirtualBox:~/homework$
