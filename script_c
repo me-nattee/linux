@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for year in {2010..2017}
+do
+	for month in {1..12}
+	do
+		printf -v path "%d/%02d" $year $month
+		mkdir -p $path
+		
+		for doc in {1..5}
+		do
+			printf -v doc "%03d" $doc
+			echo "Файл $doc" > "$path/$doc.txt"
+		done
+	done
+
+done
